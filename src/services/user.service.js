@@ -1,8 +1,12 @@
 import User from '../database/models/User';
+import KafkaProducer from './KafkaProducer.service';
 
 class UserService {
   async createUser(userData) {
-    return await User.create(userData);
+    const user = new User({...userData});
+    await user.save();
+    await KafkaProducer.sendMessage('topic_raihan_betest', user);
+    return user;
   }
 
   async getUserByAccountNumber(accountNumber) {
@@ -11,6 +15,10 @@ class UserService {
 
   async getUserByIdentityNumber(identityNumber) {
     return await User.findOne({ identityNumber });
+  }
+
+  async getUsers() {
+    return await User.find({});
   }
 
   async updateUser(userId, newData) {

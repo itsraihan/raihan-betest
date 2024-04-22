@@ -17,6 +17,9 @@ router.use(authenticateToken);
 router.post('/', userController.createUser);
 
 // GET /api/users/account/:accountNumber
+router.get('/', userController.getUsers);
+
+// GET /api/users/account/:accountNumber
 router.get('/account/:accountNumber', userController.getUserByAccountNumber);
 
 // GET /api/users/identity/:identityNumber
