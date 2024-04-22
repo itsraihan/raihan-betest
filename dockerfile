@@ -19,7 +19,7 @@ EXPOSE 3000
 # Define environment variable for MongoDB and Kafka connection
 ENV MONGODB_URI='mongodb://mongo:27017/'
 ENV MONGODB_NAME='db_raihan_betest'
-ENV KAFKA_HOST=kafka:9092
+ENV KAFKA_HOST=kafka:29092
 ENV PORT=3000
 ENV JWT_SECRET='1234567890ABCDEFG'
 
